@@ -113,6 +113,7 @@ namespace DDTVLiveRec
 
             InfoLog.InfoPrintf(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + ": " + "DDTVLiveRec启动完成", InfoLog.InfoClass.下载系统信息);
             
+            private static readonly AutoResetEvent _closingEvent = new AutoResetEvent(false); 
             Console.CancelKeyPress += ((s, a) =>
                     {
                         Console.WriteLine("程序已退出！");
