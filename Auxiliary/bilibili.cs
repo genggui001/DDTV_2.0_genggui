@@ -90,7 +90,7 @@ namespace Auxiliary
                 while (true)
                 {
                     try
-                    {                  
+                    {
                         周期更新B站房间状态();
                         await Task.Delay(MMPU.直播更新时间 * 1000);
                     }
@@ -431,6 +431,7 @@ namespace Auxiliary
                                 if (((JObject)JO["data"][item.UID]).Property("live_status") != null)
                                 {
                                     状态 = (int)JO["data"][item.UID]["live_status"];
+                                    InfoLog.InfoPrintf("名称: " + item.名称.ToString() + " 状态: " + 状态.ToString(), InfoLog.InfoClass.Debug);
                                     if (状态 == 0)
                                     {
                                         item.直播状态 = false;
