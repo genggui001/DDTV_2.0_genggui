@@ -112,10 +112,13 @@ namespace DDTVLiveRec
             #endregion
 
             InfoLog.InfoPrintf(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + ": " + "DDTVLiveRec启动完成", InfoLog.InfoClass.下载系统信息);
-            while (true)
-            {
-                Console.ReadLine();
-            }
+            
+            Console.CancelKeyPress += ((s, a) =>
+                    {
+                        Console.WriteLine("程序已退出！");
+                        _closingEvent.Set();
+                    });
+            _closingEvent.WaitOne();
            
         }
     }
